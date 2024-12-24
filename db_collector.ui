@@ -1,0 +1,1134 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Created with Cambalache 0.92.2 -->
+<interface>
+  <!-- interface-name db_collector.ui -->
+  <requires lib="gio" version="2.44"/>
+  <requires lib="gtk" version="4.14"/>
+  <object class="GtkBox" id="filters_menu_base">
+    <property name="margin-bottom">19</property>
+    <property name="margin-end">10</property>
+    <property name="margin-start">10</property>
+    <property name="margin-top">10</property>
+    <property name="orientation">vertical</property>
+    <property name="spacing">10</property>
+    <property name="vexpand">True</property>
+    <child>
+      <object class="GtkFrame">
+        <property name="label">Фильтрация по пользователям</property>
+        <property name="tooltip-text">Перечислите пользователей через пробел. По умолчанию подходят все пользователи.</property>
+        <child>
+          <object class="GtkEntry" id="users_filter_entry"/>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="GtkFrame">
+        <property name="halign">end</property>
+        <property name="label">Белый список пользователей</property>
+        <child>
+          <object class="GtkCheckButton" id="users_whitelist_button">
+            <property name="halign">end</property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="GtkGrid">
+        <property name="column-spacing">10</property>
+        <property name="row-spacing">10</property>
+        <child>
+          <object class="GtkFrame">
+            <property name="hexpand">True</property>
+            <property name="label">Начальное время</property>
+            <child>
+              <object class="GtkEntry" id="start_time_entry"/>
+            </child>
+            <layout>
+              <property name="column">0</property>
+              <property name="column-span">1</property>
+              <property name="row">0</property>
+              <property name="row-span">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="GtkFrame">
+            <property name="hexpand">True</property>
+            <property name="label">Конечное время</property>
+            <child>
+              <object class="GtkEntry" id="end_time_entry"/>
+            </child>
+            <layout>
+              <property name="column">1</property>
+              <property name="column-span">1</property>
+              <property name="row">0</property>
+              <property name="row-span">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="GtkFrame">
+            <property name="hexpand">True</property>
+            <property name="label">Номер поднесущей</property>
+            <child>
+              <object class="GtkSpinButton" id="subcar_spinbox"/>
+            </child>
+            <layout>
+              <property name="column">1</property>
+              <property name="column-span">1</property>
+              <property name="row">1</property>
+              <property name="row-span">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="GtkFrame">
+            <property name="label">№ пакета</property>
+            <child>
+              <object class="GtkBox">
+                <property name="orientation">vertical</property>
+                <child>
+                  <object class="GtkBox">
+                    <child>
+                      <object class="GtkFrame">
+                        <property name="hexpand">True</property>
+                        <property name="label">От</property>
+                        <child>
+                          <object class="GtkSpinButton" id="id_packet_from_sb">
+                            <property name="adjustment">
+                              <object class="GtkAdjustment">
+                                <property name="page-increment">1.0</property>
+                                <property name="page-size">1.0</property>
+                                <property name="step-increment">1.0</property>
+                                <property name="upper">1e+23</property>
+                              </object>
+                            </property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkFrame">
+                        <property name="hexpand">True</property>
+                        <property name="label">До</property>
+                        <child>
+                          <object class="GtkSpinButton" id="id_packet_to_sb">
+                            <property name="adjustment">
+                              <object class="GtkAdjustment">
+                                <property name="page-increment">1.0</property>
+                                <property name="page-size">1.0</property>
+                                <property name="step-increment">1.0</property>
+                                <property name="upper">1e+51</property>
+                              </object>
+                            </property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkFrame">
+                    <property name="halign">end</property>
+                    <property name="label">Включить ограничение</property>
+                    <child>
+                      <object class="GtkCheckButton" id="id_limits_checker">
+                        <property name="halign">end</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <layout>
+              <property name="column">0</property>
+              <property name="column-span">1</property>
+              <property name="row">1</property>
+              <property name="row-span">1</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkBox" id="filters_menu_multiple_choose">
+    <property name="margin-bottom">19</property>
+    <property name="margin-end">10</property>
+    <property name="margin-start">10</property>
+    <property name="margin-top">10</property>
+    <property name="orientation">vertical</property>
+    <property name="spacing">10</property>
+    <property name="vexpand">True</property>
+    <child>
+      <object class="GtkFrame">
+        <property name="label">Фильтрация по пользователям</property>
+        <property name="tooltip-text">Перечислите пользователей через пробел. По умолчанию подходят все пользователи.</property>
+        <child>
+          <object class="GtkEntry" id="users_filter_entry_2"/>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="GtkFrame">
+        <property name="halign">end</property>
+        <property name="label">Белый список пользователей</property>
+        <child>
+          <object class="GtkCheckButton" id="users_whitelist_button_2">
+            <property name="halign">end</property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="GtkGrid">
+        <property name="column-spacing">10</property>
+        <property name="row-spacing">10</property>
+        <child>
+          <object class="GtkFrame">
+            <property name="hexpand">True</property>
+            <property name="label">Начальное время</property>
+            <child>
+              <object class="GtkEntry" id="start_time_entry_2"/>
+            </child>
+            <layout>
+              <property name="column">0</property>
+              <property name="column-span">1</property>
+              <property name="row">0</property>
+              <property name="row-span">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="GtkFrame">
+            <property name="hexpand">True</property>
+            <property name="label">Конечное время</property>
+            <child>
+              <object class="GtkEntry" id="end_time_entry_2"/>
+            </child>
+            <layout>
+              <property name="column">1</property>
+              <property name="column-span">1</property>
+              <property name="row">0</property>
+              <property name="row-span">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="GtkFrame">
+            <property name="hexpand">True</property>
+            <property name="label">Номер поднесущей</property>
+            <child>
+              <object class="GtkSpinButton" id="subcar_spinbox_2"/>
+            </child>
+            <layout>
+              <property name="column">1</property>
+              <property name="column-span">1</property>
+              <property name="row">1</property>
+              <property name="row-span">1</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="GtkFrame">
+            <property name="label">№ пакета</property>
+            <child>
+              <object class="GtkBox">
+                <property name="orientation">vertical</property>
+                <child>
+                  <object class="GtkBox">
+                    <child>
+                      <object class="GtkFrame">
+                        <property name="hexpand">True</property>
+                        <property name="label">От</property>
+                        <child>
+                          <object class="GtkSpinButton" id="id_packet_from_sb_2">
+                            <property name="adjustment">
+                              <object class="GtkAdjustment">
+                                <property name="page-increment">1.0</property>
+                                <property name="page-size">1.0</property>
+                                <property name="step-increment">1.0</property>
+                                <property name="upper">1e+23</property>
+                              </object>
+                            </property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkFrame">
+                        <property name="hexpand">True</property>
+                        <property name="label">До</property>
+                        <child>
+                          <object class="GtkSpinButton" id="id_packet_to_sb_2">
+                            <property name="adjustment">
+                              <object class="GtkAdjustment">
+                                <property name="page-increment">1.0</property>
+                                <property name="page-size">1.0</property>
+                                <property name="step-increment">1.0</property>
+                                <property name="upper">1e+51</property>
+                              </object>
+                            </property>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkFrame">
+                    <property name="halign">end</property>
+                    <property name="label">Включить ограничение</property>
+                    <child>
+                      <object class="GtkCheckButton" id="id_limits_checker_2">
+                        <property name="halign">end</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <layout>
+              <property name="column">0</property>
+              <property name="column-span">1</property>
+              <property name="row">1</property>
+              <property name="row-span">1</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="GtkBox">
+        <property name="homogeneous">True</property>
+        <child>
+          <object class="GtkCheckButton" id="ampls_checker">
+            <property name="halign">center</property>
+            <property name="label">Амплитуда</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="phase_checker">
+            <property name="halign">center</property>
+            <property name="label">Фаза</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="pictures_checker">
+            <property name="halign">center</property>
+            <property name="label">Изображения</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="real_part_checker">
+            <property name="halign">center</property>
+            <property name="label">Действ. часть</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkCheckButton" id="imag_part_checker">
+            <property name="halign">center</property>
+            <property name="label">Мнимая часть</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkWindow" id="hw_window">
+    <property name="default-height">400</property>
+    <property name="default-width">600</property>
+    <property name="hide-on-close">True</property>
+    <property name="title">Аппаратура</property>
+    <child>
+      <object class="GtkBox">
+        <property name="spacing">10</property>
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <property name="vexpand">True</property>
+            <child>
+              <object class="GtkFrame">
+                <property name="label">Названия</property>
+                <property name="vexpand">True</property>
+                <child>
+                  <object class="GtkScrolledWindow">
+                    <property name="has-frame">True</property>
+                    <property name="vscrollbar-policy">always</property>
+                    <child>
+                      <object class="GtkListView" id="hw_list_view">
+                        <property name="factory">
+                          <object class="GtkBuilderListItemFactory">
+                            <property name="bytes"><![CDATA[<?xml version='1.0' encoding='UTF-8'?>
+<interface>
+    <template class="GtkListItem">
+      <property name="child">
+        <object class="GtkLabel">
+          <property name="xalign">0</property>
+	  <binding name="label">
+		<lookup name="string" type="GtkStringObject">
+			<lookup name="item">GtkListItem</lookup>
+		</lookup>
+	  </binding>
+        </object>
+      </property>
+    </template>
+  </interface>
+]]></property>
+                          </object>
+                        </property>
+                        <property name="model">
+                          <object class="GtkSingleSelection" id="hw_selector">
+                            <property name="model">
+                              <object class="GtkStringList" id="hw_list_store"/>
+                            </property>
+                          </object>
+                        </property>
+                        <property name="single-click-activate">True</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="hw_new_button">
+                <property name="label">Новое оборудование</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="GtkBox">
+                <child>
+                  <object class="GtkFrame">
+                    <property name="hexpand">True</property>
+                    <property name="label">Название</property>
+                    <child>
+                      <object class="GtkEntry" id="hw_entry_name">
+                        <property name="width-request">200</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkFrame">
+                    <property name="hexpand">True</property>
+                    <property name="label">Количество антенн</property>
+                    <child>
+                      <object class="GtkSpinButton" id="hw_antennas_sb">
+                        <property name="adjustment">
+                          <object class="GtkAdjustment">
+                            <property name="page-increment">1.0</property>
+                            <property name="page-size">1.0</property>
+                            <property name="step-increment">1.0</property>
+                            <property name="upper">1e+34</property>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkFrame">
+                    <property name="hexpand">True</property>
+                    <property name="label">Количество поднесущих</property>
+                    <child>
+                      <object class="GtkSpinButton" id="hw_subcar_sb">
+                        <property name="adjustment">
+                          <object class="GtkAdjustment">
+                            <property name="page-increment">1.0</property>
+                            <property name="page-size">1.0</property>
+                            <property name="step-increment">1.0</property>
+                            <property name="upper">1e+63</property>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkFrame">
+                <property name="label">Описание</property>
+                <child>
+                  <object class="GtkTextView">
+                    <property name="buffer">
+                      <object class="GtkTextBuffer" id="hw_desc_buffer"/>
+                    </property>
+                    <property name="vexpand">True</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkBox">
+                <property name="homogeneous">True</property>
+                <child>
+                  <object class="GtkButton" id="hw_delete_button">
+                    <property name="halign">start</property>
+                    <property name="label">Удалить</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="hw_cancel_button">
+                    <property name="halign">start</property>
+                    <property name="label">Отмена</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="hw_apply_button">
+                    <property name="halign">end</property>
+                    <property name="label">Применить</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkWindow" id="experiment_window">
+    <property name="hide-on-close">True</property>
+    <property name="title">Новый эксперимент</property>
+    <child>
+      <object class="GtkBox">
+        <property name="spacing">10</property>
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="GtkFrame">
+                <property name="label">Название</property>
+                <child>
+                  <object class="GtkEntry" id="name_entry">
+                    <property name="width-request">200</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkFrame">
+                <property name="label">Описание</property>
+                <child>
+                  <object class="GtkScrolledWindow">
+                    <child>
+                      <object class="GtkTextView" id="experiment_desc_view">
+                        <property name="buffer">
+                          <object class="GtkTextBuffer" id="experiment_desc_buf"/>
+                        </property>
+                        <property name="vexpand">True</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <property name="spacing">3</property>
+            <child>
+              <object class="GtkFrame">
+                <property name="label">Принимающее устройство</property>
+                <child>
+                  <object class="GtkDropDown" id="experiment_receiver_dd">
+                    <property name="model">
+                      <object class="GtkStringList" id="experiment_receiver_list"/>
+                    </property>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkFrame">
+                <property name="label">Передающее устройство</property>
+                <child>
+                  <object class="GtkDropDown" id="experiment_transmitter_dd">
+                    <property name="model">
+                      <object class="GtkStringList" id="exmeriment_transmitter_list"/>
+                    </property>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkFrame">
+                <property name="label">Схема обработки</property>
+                <child>
+                  <object class="GtkGrid">
+                    <property name="column-homogeneous">True</property>
+                    <child>
+                      <object class="GtkFrame">
+                        <property name="label">Приём</property>
+                        <child>
+                          <object class="GtkDropDown" id="exp_recv_soft_dd">
+                            <property name="model">
+                              <object class="GtkStringList" id="exp_recv_soft_list"/>
+                            </property>
+                          </object>
+                        </child>
+                        <layout>
+                          <property name="column">0</property>
+                          <property name="column-span">1</property>
+                          <property name="row">1</property>
+                          <property name="row-span">1</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkFrame">
+                        <property name="label">Обработка вывода</property>
+                        <child>
+                          <object class="GtkDropDown" id="exp_draw_soft_dd">
+                            <property name="model">
+                              <object class="GtkStringList" id="exp_draw_soft_list"/>
+                            </property>
+                          </object>
+                        </child>
+                        <layout>
+                          <property name="column">2</property>
+                          <property name="column-span">1</property>
+                          <property name="row">0</property>
+                          <property name="row-span">1</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkFrame">
+                        <property name="label">Обработка записи в БД</property>
+                        <child>
+                          <object class="GtkDropDown" id="exp_db_soft_dd">
+                            <property name="model">
+                              <object class="GtkStringList" id="exp_db_soft_list"/>
+                            </property>
+                          </object>
+                        </child>
+                        <layout>
+                          <property name="column">2</property>
+                          <property name="column-span">1</property>
+                          <property name="row">2</property>
+                          <property name="row-span">1</property>
+                        </layout>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkFrame">
+                        <property name="label">Предобработка</property>
+                        <child>
+                          <object class="GtkDropDown" id="exp_preproc_soft_dd">
+                            <property name="model">
+                              <object class="GListStore" id="exp_preproc_soft_list"/>
+                            </property>
+                          </object>
+                        </child>
+                        <layout>
+                          <property name="column">1</property>
+                          <property name="column-span">1</property>
+                          <property name="row">1</property>
+                          <property name="row-span">1</property>
+                        </layout>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkBox">
+                <property name="homogeneous">True</property>
+                <child>
+                  <object class="GtkButton" id="exp_cancel_button">
+                    <property name="halign">start</property>
+                    <property name="label">Отмена</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="exp_add_button">
+                    <property name="halign">end</property>
+                    <property name="label">Добавить</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkWindow" id="draw_filters_window">
+    <property name="hide-on-close">True</property>
+    <property name="title">Фильтры отображения</property>
+    <child>
+      <object class="GtkBox">
+        <property name="margin-bottom">19</property>
+        <property name="margin-end">10</property>
+        <property name="margin-start">10</property>
+        <property name="margin-top">10</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">10</property>
+        <property name="vexpand">True</property>
+        <child>
+          <object class="GtkFrame">
+            <property name="label">Фильтрация по пользователям</property>
+            <property name="tooltip-text">Перечислите пользователей через пробел. По умолчанию подходят все пользователи.</property>
+            <child>
+              <object class="GtkEntry" id="users_filter_entry_3"/>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkFrame">
+            <property name="halign">end</property>
+            <property name="label">Белый список пользователей</property>
+            <child>
+              <object class="GtkCheckButton" id="users_whitelist_button_3">
+                <property name="halign">end</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkGrid">
+            <property name="column-spacing">10</property>
+            <property name="row-spacing">10</property>
+            <child>
+              <object class="GtkFrame">
+                <property name="hexpand">True</property>
+                <property name="label">Начальное время</property>
+                <child>
+                  <object class="GtkEntry" id="start_time_entry_3"/>
+                </child>
+                <layout>
+                  <property name="column">0</property>
+                  <property name="column-span">1</property>
+                  <property name="row">0</property>
+                  <property name="row-span">1</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkFrame">
+                <property name="hexpand">True</property>
+                <property name="label">Конечное время</property>
+                <child>
+                  <object class="GtkEntry" id="end_time_entry_3"/>
+                </child>
+                <layout>
+                  <property name="column">1</property>
+                  <property name="column-span">1</property>
+                  <property name="row">0</property>
+                  <property name="row-span">1</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkFrame">
+                <property name="hexpand">True</property>
+                <property name="label">Номер поднесущей</property>
+                <child>
+                  <object class="GtkSpinButton" id="subcar_spinbox_3"/>
+                </child>
+                <layout>
+                  <property name="column">1</property>
+                  <property name="column-span">1</property>
+                  <property name="row">1</property>
+                  <property name="row-span">1</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkFrame">
+                <property name="label">№ пакета</property>
+                <child>
+                  <object class="GtkBox">
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="GtkBox">
+                        <child>
+                          <object class="GtkFrame">
+                            <property name="hexpand">True</property>
+                            <property name="label">От</property>
+                            <child>
+                              <object class="GtkSpinButton" id="id_packet_from_sb_3">
+                                <property name="adjustment">
+                                  <object class="GtkAdjustment">
+                                    <property name="page-increment">1.0</property>
+                                    <property name="page-size">1.0</property>
+                                    <property name="step-increment">1.0</property>
+                                    <property name="upper">1e+23</property>
+                                  </object>
+                                </property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkFrame">
+                            <property name="hexpand">True</property>
+                            <property name="label">До</property>
+                            <child>
+                              <object class="GtkSpinButton" id="id_packet_to_sb_3">
+                                <property name="adjustment">
+                                  <object class="GtkAdjustment">
+                                    <property name="page-increment">1.0</property>
+                                    <property name="page-size">1.0</property>
+                                    <property name="step-increment">1.0</property>
+                                    <property name="upper">1e+51</property>
+                                  </object>
+                                </property>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="id_limits_checker_3">
+                        <property name="halign">end</property>
+                        <property name="label">Включить ограничение</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <layout>
+                  <property name="column">0</property>
+                  <property name="column-span">1</property>
+                  <property name="row">1</property>
+                  <property name="row-span">1</property>
+                </layout>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="hexpand">True</property>
+            <property name="homogeneous">True</property>
+            <child>
+              <object class="GtkCheckButton" id="ampls_checker_one_2">
+                <property name="active">True</property>
+                <property name="group">ampls_checker_one_2</property>
+                <property name="halign">center</property>
+                <property name="label">Амплитуда</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkCheckButton" id="phase_checker_one_2">
+                <property name="group">ampls_checker_one_2</property>
+                <property name="halign">center</property>
+                <property name="label">Фаза</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkCheckButton" id="real_part_checker_one_2">
+                <property name="group">ampls_checker_one_2</property>
+                <property name="halign">center</property>
+                <property name="label">Действ. часть</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkCheckButton" id="imag_part_checker_one_2">
+                <property name="group">ampls_checker_one_2</property>
+                <property name="halign">center</property>
+                <property name="label">Мнимая часть</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkWindow" id="main_window">
+    <property name="default-height">400</property>
+    <property name="default-width">600</property>
+    <property name="hide-on-close">True</property>
+    <property name="title">Data collector</property>
+    <child>
+      <object class="GtkBox">
+        <property name="orientation">vertical</property>
+        <property name="spacing">5</property>
+        <child>
+          <object class="GtkBox">
+            <property name="homogeneous">True</property>
+            <child>
+              <object class="GtkButton" id="exp_window_button">
+                <property name="label">Новый эксперимент</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="hw_window_button">
+                <property name="label">Аппаратура</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="import_window_button">
+                <property name="label">Импорт данных</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="export_window_button">
+                <property name="label">Экспорт данных</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="handler_window_button">
+                <property name="label">Обработчики</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="hexpand">True</property>
+            <property name="spacing">5</property>
+            <child>
+              <object class="GtkBox">
+                <property name="orientation">vertical</property>
+                <child>
+                  <object class="GtkFrame">
+                    <property name="label">Эксперименты</property>
+                    <property name="vexpand">True</property>
+                    <child>
+                      <object class="GtkListView" id="experiments_list_view">
+                        <property name="factory">
+                          <object class="GtkBuilderListItemFactory">
+                            <property name="bytes"><![CDATA[<?xml version='1.0' encoding='UTF-8'?>
+<interface>
+    <template class="GtkListItem">
+      <property name="child">
+        <object class="GtkLabel">
+          <property name="xalign">0</property>
+	  <binding name="label">
+		<lookup name="string" type="GtkStringObject">
+			<lookup name="item">GtkListItem</lookup>
+		</lookup>
+	  </binding>
+        </object>
+      </property>
+    </template>
+  </interface>
+]]></property>
+                          </object>
+                        </property>
+                        <property name="model">
+                          <object class="GtkSingleSelection">
+                            <property name="model">
+                              <object class="GtkStringList" id="experiments_list"/>
+                            </property>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkBox" id="main_glarea_box">
+                <property name="orientation">vertical</property>
+                <child>
+                  <object class="GtkGLArea" id="graph_printer">
+                    <property name="height-request">300</property>
+                    <property name="hexpand">True</property>
+                    <property name="vexpand">True</property>
+                    <property name="width-request">600</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="filters_menu_button">
+                    <property name="label">Открыть окно фильтров</property>
+                    <property name="valign">end</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkFrame">
+                <property name="label">Данные об эксперименте</property>
+                <child>
+                  <object class="GtkBox">
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="GtkScrolledWindow">
+                        <property name="hexpand">True</property>
+                        <property name="hscrollbar-policy">never</property>
+                        <property name="vexpand">True</property>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="orientation">vertical</property>
+                            <child>
+                              <object class="GtkFrame">
+                                <property name="label">Название</property>
+                                <child>
+                                  <object class="GtkEntry" id="main_exp_name_entry">
+                                    <property name="editable">False</property>
+                                    <property name="enable-undo">False</property>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkFrame">
+                                <child>
+                                  <object class="GtkFrame">
+                                    <property name="label">Описание</property>
+                                    <child>
+                                      <object class="GtkScrolledWindow">
+                                        <child>
+                                          <object class="GtkTextView">
+                                            <property name="buffer">
+                                              <object class="GtkTextBuffer" id="main_exp_desc_buffer"/>
+                                            </property>
+                                            <property name="editable">False</property>
+                                            <property name="height-request">100</property>
+                                          </object>
+                                        </child>
+                                      </object>
+                                    </child>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkFrame">
+                                <property name="label">Приёмник</property>
+                                <child>
+                                  <object class="GtkDropDown">
+                                    <property name="model">
+                                      <object class="GtkStringList" id="main_recv_list"/>
+                                    </property>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkFrame">
+                                <property name="label">Передатчик</property>
+                                <child>
+                                  <object class="GtkDropDown">
+                                    <property name="model">
+                                      <object class="GtkStringList" id="main_trans_list"/>
+                                    </property>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkButton" id="main_extra_info_data">
+                        <property name="label">Дополнительно</property>
+                        <property name="valign">end</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkWindow" id="import_window">
+    <property name="default-height">400</property>
+    <property name="default-width">600</property>
+    <property name="hide-on-close">True</property>
+    <property name="title">Импорт</property>
+    <child>
+      <object class="GtkBox">
+        <property name="margin-bottom">5</property>
+        <property name="margin-end">5</property>
+        <property name="margin-start">5</property>
+        <property name="margin-top">5</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">5</property>
+        <child>
+          <object class="GtkBox">
+            <child>
+              <object class="GtkButton" id="import_get_path_button">
+                <property name="label">Выбрать старую БД</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkEntry" id="import_get_path_entry">
+                <property name="hexpand">True</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkFrame">
+            <property name="label">Название эксперимента</property>
+            <child>
+              <object class="GtkEntry" id="import_name_entry"/>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkBox">
+            <property name="spacing">5</property>
+            <child>
+              <object class="GtkFrame">
+                <property name="label">Описание</property>
+                <child>
+                  <object class="GtkScrolledWindow">
+                    <property name="hexpand">True</property>
+                    <property name="vexpand">True</property>
+                    <child>
+                      <object class="GtkTextView" id="import_desc_tv">
+                        <property name="buffer">
+                          <object class="GtkTextBuffer" id="import_desc_buffer"/>
+                        </property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkBox">
+                <property name="homogeneous">True</property>
+                <property name="orientation">vertical</property>
+                <property name="spacing">5</property>
+                <property name="width-request">150</property>
+                <child>
+                  <object class="GtkFrame">
+                    <property name="label">Приёмник</property>
+                    <child>
+                      <object class="GtkDropDown" id="import_recv_dd">
+                        <property name="model">
+                          <object class="GtkStringList" id="import_recv_list"/>
+                        </property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkFrame">
+                    <property name="label">Передатчик</property>
+                    <child>
+                      <object class="GtkDropDown" id="import_trans_dd">
+                        <property name="model">
+                          <object class="GtkStringList" id="import_trans_list"/>
+                        </property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

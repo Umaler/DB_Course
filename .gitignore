@@ -1,0 +1,5 @@
+*.save
+obj/*
+bin/*
+*.db*
+
