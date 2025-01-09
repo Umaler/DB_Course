@@ -22,6 +22,10 @@ public:
         _update_signal.emit(*this);
     }
 
+    uint32_t getDBId() const {
+        return _idx;
+    }
+
     const Settings& get_settings() const {
         return settings;
     }
@@ -60,6 +64,10 @@ public:
 
     Hardware& get_hardware(size_t idx) {
         return hardwares.at(idx);
+    }
+
+    Hardware& get_hardware_by_db_idx(int32_t idx) {
+        return get_hardware(dbToLocalIdx[idx]);
     }
 
     void add_hardware(Hardware::Settings params = Hardware::Settings(), std::optional<size_t> db_idx = std::nullopt) {
@@ -111,6 +119,7 @@ public:
         }
         new_hw._idx = *db_idx;
         hardwares.push_back(new_hw);
+        dbToLocalIdx[new_hw._idx] = hardwares.size() - 1;
 
         _signal_update.emit();
     }
@@ -152,6 +161,7 @@ private:
 
     sigc::signal<void()> _signal_update;
     std::vector<Hardware> hardwares;
+    std::map<int32_t, size_t> dbToLocalIdx;
 
 };
 

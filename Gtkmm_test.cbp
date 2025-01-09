@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="Gtkmm_test" />
+		<Option title="DatasetCollector" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
@@ -33,13 +33,35 @@
 			<Add option="-Wextra" />
 			<Add option="-std=c++20" />
 			<Add option="`pkg-config --cflags gtkmm-4.0`" />
+			<Add option="`pkg-config --cflags sfml-network`" />
+			<Add option="`pkg-config --cflags opencv4`" />
+			<Add directory="include" />
 		</Compiler>
 		<Linker>
 			<Add option="`pkg-config --libs gtkmm-4.0`" />
+			<Add option="`pkg-config --libs sqlitecpp`" />
+			<Add option="`pkg-config --libs sfml-network`" />
+			<Add option="`pkg-config --libs opencv4`" />
+			<Add library="epoxy" />
 		</Linker>
+		<Unit filename="include/DataSet.hpp" />
+		<Unit filename="include/ExtendablePlot.hpp" />
+		<Unit filename="include/Shader.hpp" />
+		<Unit filename="include/csi_fun.h" />
 		<Unit filename="include/db_handler.hpp" />
+		<Unit filename="include/embedded_handler.hpp" />
+		<Unit filename="include/experiments_list.hpp" />
+		<Unit filename="include/handler.hpp" />
+		<Unit filename="include/handlers_list.hpp" />
 		<Unit filename="include/hw_list.hpp" />
+		<Unit filename="include/marker_manager.hpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/DataSet.cpp" />
+		<Unit filename="src/ExtendablePlot.cpp" />
+		<Unit filename="src/Shader.cpp" />
+		<Unit filename="src/csi_fun.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
